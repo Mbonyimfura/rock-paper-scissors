@@ -36,6 +36,37 @@ if(playerSelection==='scissors'){
 return 'Invalid choice! Please choose rock,paper,scissors'
 
    }
-   const playerSelection = "PAPERS";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+   //function to play 5 round
+   const game=()=>{
+    let playerScore=0;
+    let computerScore=0;
+    for(let round=1;round<=5;round++){
+      const  playerSelection=prompt('enter your choice(rock,paper,scissors):')
+     const  computerSelection=getComputerChoice()
+      console.log(`round ${round}:`)  
+      console.log(`player chooses ${playerSelection}:`)
+      console.log(`computer chooses ${computerSelection}:`)
+
+      const result=playRound(playerSelection,computerSelection);
+      console.log(result)
+
+      if(result.startsWith('You win')){
+        playerScore++
+      }else if(result.startsWith('You lose')){
+        computerScore++
+      }
+    }
+console.log('Game over!');
+console.log(`Player score:${playerScore}`)
+console.log(`Computer score:${computerScore}`)
+if(playerScore>computerScore){
+    console.log(`You win the game`)
+}else if(playerScore<computerScore){
+    console.log(`Computer win the game`)
+}else{
+    console.log(`It's a tie`)
+}
+   }
+   //start the game
+   game()
