@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll("button");
 const content = document.createElement("div");
 const container = document.querySelector(".container");
+const scoreElement = document.createElement("p");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -65,7 +66,7 @@ const displayResult = (result) => {
 };
 // function to display score
 const displayScore = () => {
-  const scoreElement = document.createElement("p");
+ 
   scoreElement.textContent = `Player: ${playerScore} score - computer: ${computerScore} score`;
   container.appendChild(scoreElement);
 };
@@ -83,4 +84,17 @@ const disableButtons = () => {
   buttons.forEach((button) => {
     button.disabled = true;
   });
+  setTimeout(() => {
+    buttons.forEach((button) => {
+      button.disabled = false;
+       // Clear output
+       scoreElement.textContent='';
+    content.textContent = '';
+
+    // Reset score
+    playerScore = 0;
+    computerScore = 0;
+    });
+  }, 2000); 
 };
+
